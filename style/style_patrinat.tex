@@ -1,0 +1,225 @@
+% ============================================================
+% PATRINAT — STYLE INSTITUTIONNEL (VERSION STABLE)
+% ============================================================
+
+% ------------------------------------------------------------
+% PACKAGES
+% ------------------------------------------------------------
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+
+
+% ------------------------------------------------------------
+% COULEURS
+% ------------------------------------------------------------
+
+\definecolor{patrinatblue}{HTML}{00A1BF}
+\definecolor{textgray}{HTML}{333333}
+\definecolor{toccolor}{HTML}{404040}
+\definecolor{pagecolor}{HTML}{262626}
+\definecolor{astral}{RGB}{46,116,181}
+\definecolor{bluecit}{RGB}{33,150,210}
+
+% ------------------------------------------------------------
+% POLICES
+% ------------------------------------------------------------
+
+\setmainfont{Marianne}[
+  Path=fonts/Marianne/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-RegularItalic,
+  BoldItalicFont=*-BoldItalic
+]
+
+\newfontfamily\headingfont{Calibri Light}[
+  BoldFont=Calibri Bold
+]
+
+\newfontfamily\spectralfont{Spectral}[
+  Path=fonts/Spectral/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Italic
+]
+
+\newfontface\calibri{Calibri}
+
+
+% ------------------------------------------------------------
+% MISE EN PAGE
+% ------------------------------------------------------------
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\leftskip}{0pt}
+
+\setlength{\textfloatsep}{12pt}
+
+
+% ------------------------------------------------------------
+% TITRES BODY
+% ------------------------------------------------------------
+
+\titleformat{\section}
+{\headingfont\bfseries\fontsize{16pt}{18pt}\selectfont\color{patrinatblue}}
+{\thesection}{0.6em}{}
+
+\titleformat{\subsection}
+{\headingfont\bfseries\fontsize{13pt}{15pt}\selectfont\color{patrinatblue}}
+{\thesubsection}{0.6em}{}
+
+\titleformat{\subsubsection}
+{\headingfont\bfseries\fontsize{12pt}{14pt}\selectfont\color{patrinatblue}}
+{\thesubsubsection}{0.6em}{}
+
+\titleformat{\paragraph}
+{\headingfont\bfseries\fontsize{10pt}{12pt}\selectfont\color{patrinatblue}}
+{\theparagraph}{0.6em}{}
+
+% ------------------------------------------------------------
+% NUMEROTATION DE PAGES
+% ------------------------------------------------------------
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{fancy}{%
+  \fancyhf{}
+  \fancyfoot[R]{\calibri\fontsize{11}{13}\selectfont\textcolor{pagecolor}{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[R]{\calibri\fontsize{11}{13}\selectfont\textcolor{pagecolor}{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+% ------------------------------------------------------------
+% TOC STYLE
+% ------------------------------------------------------------
+\renewcommand{\cfttoctitlefont}{%
+  \rmfamily\bfseries\fontsize{26pt}{30pt}\selectfont\color{toccolor}
+}
+\renewcommand{\cftaftertoctitle}{\vspace{8pt}}
+
+% Définir un style de page vide pour le TOC
+\fancypagestyle{tocstyle}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\renewcommand{\tableofcontents}{%
+  \begin{singlespace}
+    \setlength{\cftaftersecskip}{6pt}
+    \section*{\contentsname}
+    \@starttoc{toc}
+  \end{singlespace}
+}
+
+% ------------------------------------------------------------
+% TOC ALIGNEMENT
+% ------------------------------------------------------------
+\setlength{\cftaftertoctitleskip}{30pt}  % espace après le titre SOMMAIRE
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsubsubsecindent}{0pt}
+
+
+\setlength{\cftsecnumwidth}{3em}
+\setlength{\cftsubsecnumwidth}{3em}
+\setlength{\cftsubsubsecnumwidth}{3em}
+
+
+\setlength{\cftbeforesecskip}{4pt}    % espace avant chaque TITRE1
+\setlength{\cftbeforesubsecskip}{4pt}  % espace avant chaque TITRE2
+\setlength{\cftbeforesubsubsecskip}{4pt} % espace avant chaque TITRE3
+
+% ------------------------------------------------------------
+% TOC TEXT
+% ------------------------------------------------------------
+
+\renewcommand{\cftsecfont}{\rmfamily\bfseries\fontsize{11pt}{13pt}\selectfont\color{toccolor}}
+\renewcommand{\cftsubsecfont}{\rmfamily\fontsize{11pt}{13pt}\selectfont\color{toccolor}}
+\renewcommand{\cftsubsubsecfont}{\rmfamily\fontsize{11pt}{13pt}\selectfont\color{toccolor}}
+
+\renewcommand{\cftsecpagefont}{\rmfamily\bfseries\fontsize{11pt}{13pt}\selectfont\color{toccolor}}
+\renewcommand{\cftsubsecpagefont}{\rmfamily\fontsize{11pt}{13pt}\selectfont\color{toccolor}}
+\renewcommand{\cftsubsubsecpagefont}{\rmfamily\fontsize{11pt}{13pt}\selectfont\color{toccolor}}
+
+% ------------------------------------------------------------
+% TOC LEADERS
+% ------------------------------------------------------------
+\renewcommand{\cftdotsep}{1}  
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+
+% ------------------------------------------------------------
+% HYPERREF
+% ------------------------------------------------------------
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=patrinatblue,
+  urlcolor=patrinatblue,
+  citecolor=patrinatblue
+}
+
+% ------------------------------------------------------------
+% LISTES
+% ------------------------------------------------------------
+
+\setlist[itemize]{topsep=3pt, itemsep=2pt}
+
+%% ------------------------------------------------------------
+% CAPTIONS
+% ------------------------------------------------------------
+\DeclareCaptionFont{spectral}{%
+  \spectralfont
+  \fontsize{9pt}{10pt}\selectfont
+}
+
+\DeclareCaptionLabelFormat{nouppercase}{#1~#2}
+
+\captionsetup{
+  font=spectral,
+  labelfont={bf,color=textgray},
+  textfont={color=textgray},
+  justification=centering,
+  singlelinecheck=false,
+  labelsep=period,
+  labelformat=nouppercase
+}
+
+\addto\captionsfrench{%
+  \renewcommand{\contentsname}{SOMMAIRE}%
+  \renewcommand{\tablename}{Tableau}%
+  \renewcommand{\figurename}{Figure}%
+}
+
+\AfterEndPreamble{%
+  \renewcommand{\figurename}{Figure}%
+  \renewcommand{\tablename}{Tableau}%
+}

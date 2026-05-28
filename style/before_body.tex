@@ -1,0 +1,33 @@
+% % =========================
+% % COVER PAGE
+% % =========================
+% \includepdf[pages=-,fitpaper=true]{couverture.pdf}
+
+% % =========================
+% % NO PAGE NUMBER ON COVER + TOC START CLEAN
+% % =========================
+% \pagenumbering{gobble}
+
+% % =========================
+% % PAGE BREAK BEFORE TOC
+% % =========================
+% \clearpage
+
+% % =========================
+% % RESTART PAGE NUMBERING FOR BODY (OPTIONNEL)
+% % =========================
+% \pagenumbering{arabic}
+% \setcounter{page}{1}
+
+
+\includepdf[pages=-,fitpaper=true]{couverture/couverture.pdf}
+\clearpage
+\pagestyle{tocstyle}
+\pagenumbering{gobble}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{fancy}
+\thispagestyle{fancy}
