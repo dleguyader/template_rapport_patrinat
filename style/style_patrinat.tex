@@ -191,7 +191,16 @@
 % LISTES
 % ------------------------------------------------------------
 
-\setlist[itemize]{topsep=3pt, itemsep=2pt}
+% Réduction des espaces autour des listes
+\setlist[itemize]{
+  topsep=-3pt,
+  partopsep=0pt,
+  itemsep=0pt,
+  parsep=0pt
+}
+% \setlist[itemize]{topsep=3pt, itemsep=2pt}
+\setlist[itemize,1]{label=\textbullet}
+\setlist[itemize,2]{label=$\circ$}
 
 %% ------------------------------------------------------------
 % CAPTIONS
