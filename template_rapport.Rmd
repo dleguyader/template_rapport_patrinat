@@ -61,8 +61,11 @@ font_add("Marianne",
 
 showtext_auto() # Activer showtext pour tous les graphiques
 showtext_opts(dpi = 300)# Synchroniser showtext avec le DPI de knitr
+
+
 library(kableExtra)
 library(readxl)
+library(ggplot2)
 ```
 
 
@@ -79,19 +82,44 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec arcu nisl, alique
 
 Aliquam massa odio, placerat id vulputate eget, vehicula nec nisl. Duis nec mi aliquam, pellentesque purus ac, condimentum lacus. Vestibulum sed diam vestibulum efficitur velit nec, euismod ante. Praesent et dolor quis felis fermentum sagittis ultricies sit t est [@astruch_ecosystem-based_2025; @de_bettignies_indicateurs_2025].
 
-## Figure
 
-```{r, fig.cap="PatriNat en sortie de service au Golf de l'Ailette (Aisne) — septembre 2022 © Jean-Baptiste Carriou", out.width="78%"}
+* Premier élément
+* Deuxième élément
+* Troisième élément
+
+
+Voici une liste:
+
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+    
+    
+
+## Image
+
+```{r, fig.cap="PatriNat en sortie de service au Golf de l'Ailette (Aisne) — septembre 2022 © Jean-Baptiste Carriou.", out.width="78%"}
 knitr::include_graphics("img/photo.png")
 ```
 
+## Figure
+
+```{r, fig.cap= "Graphique avec la police Marianne."}
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  labs(title = "Exemple avec Marianne") +
+  theme(text = element_text(family = "Marianne"))+
+  theme_light()
+
+```
 
 
 ## Tableau
 
 ```{r tab-exemple}
 knitr::kable(
-  head(mtcars[, 1:4], 5),
+  head(iris[, 2:5], 5),
   caption = "Exemple de tableau — légende au-dessus",
   booktabs = TRUE
 ) |> 
