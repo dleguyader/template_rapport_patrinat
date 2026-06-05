@@ -50,6 +50,17 @@ knitr::opts_chunk$set(
   dpi=300, dev = "cairo_pdf",fig.path = "rapport_figs/"
 )
 
+# Pour intégrer la Police Marianne dans les graphiques/cartes
+pacman::p_load(showtext)
+font_add("Marianne", 
+         regular = "fonts/Marianne/Marianne-Regular.ttf", 
+         bold = "fonts/Marianne/Marianne-Bold.ttf", 
+         italic = "fonts/Marianne/Marianne-LightItalic.ttf", 
+         bolditalic = "fonts/Marianne/Marianne-BoldItalic.ttf", 
+         )
+
+showtext_auto() # Activer showtext pour tous les graphiques
+showtext_opts(dpi = 300)# Synchroniser showtext avec le DPI de knitr
 library(kableExtra)
 library(readxl)
 ```
